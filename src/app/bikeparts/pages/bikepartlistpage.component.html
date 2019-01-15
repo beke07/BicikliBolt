@@ -1,0 +1,35 @@
+<span>Kereső </span>
+<input type="text" [(ngModel)]="filter" (keyup)="search()" placeholder="Ide írjon..."/><br />
+<table>
+  <thead>
+    <tr>
+      <th>Cikkszám</th>
+      <th>Megnevezés</th>
+      <th>Kategória</th>
+      <th>Raktáron</th>
+      <th>Db</th>
+      <th>Ár</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let part of parts">
+      <td>{{ part.itemNo }}</td>
+      <td>{{ part.name }}</td>
+      <td>{{ part.category }}</td>
+      <td><app-progressbar [current]="part.ordered" [max]="part.numberInStock"></app-progressbar></td>
+      <td>{{ part.price }} Ft</td>
+      <td><a [routerLink]="['/parts', part.id]">Részletek</a></td>
+      <td><a (click)="order(part.id)" class="likeAtag">Megrendelés</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/">Vissza</a>
+
+<style scoped>
+  .likeAtag{
+    color: blue; 
+    text-decoration: underline; 
+    cursor: pointer;
+  }
+</style>
