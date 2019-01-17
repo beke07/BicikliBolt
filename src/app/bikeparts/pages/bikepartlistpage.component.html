@@ -15,7 +15,7 @@
     <tr *ngFor="let part of parts">
       <td>{{ part.itemNo }}</td>
       <td>{{ part.name }}</td>
-      <td>{{ part.category }}</td>
+      <td>{{ part.category | categoryToIcon }}</td>
       <td><app-progressbar [current]="part.ordered" [max]="part.numberInStock"></app-progressbar></td>
       <td>{{ part.price }} Ft</td>
       <td><a [routerLink]="['/parts', part.id]">Részletek</a></td>
